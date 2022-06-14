@@ -51,3 +51,4 @@ if [[ $ready_string == "READY" ]] ; then
 
 # ADD FLATHUB REPOSITORY TO FLATPAK
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+fi
