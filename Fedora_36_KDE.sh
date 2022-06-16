@@ -29,6 +29,7 @@ Things that this script change:
  - Updating system (SU)
  - Enabling RPM Fusion Free & Non-Free (SU)
  - Enable Flathub repository in Flatpak
+ - Fix Flatpak apps always using default GTK adwaita (SU)
 
 Use this script only on Fedora KDE Spin
 This script was made particulary for version 36 but it should work for 35 and 34 as well
@@ -64,9 +65,15 @@ if [[ $ready_string == "READY" ]] ; then
 
 # ADD RPMFUSION FREE & NON-FREE TO DNF
   if [[ $(id -u) == 0 ]] ; then
-    sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   fi
 
 # ADD FLATHUB REPOSITORY TO FLATPAK
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# FIX FLATPAK APPS USING ADWAITA
+  if [[ $(id -u) == 0 ]] ; then
+    flatpak install org.gtk.Gtk3theme.Breeze
+    flatpak override --system --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro --env "GTK_THEME=Breeze"
+  fi
 fi
