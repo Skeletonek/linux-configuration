@@ -47,7 +47,7 @@ if [[ $ready_string == "READY" ]] ; then
   dnf update -y
 
 # ADD RPMFUSION FREE & NON-FREE TO DNF
-  sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+  sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 # ADD FLATHUB REPOSITORY TO FLATPAK
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
