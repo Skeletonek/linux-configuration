@@ -51,10 +51,10 @@ if [[ $ready_string == "READY" ]] ; then
 
 # DNF CONFIGURATION
   if [[ $(id -u) == 0 ]] ; then
-    printf "# Custom config beneath" >> /etc/dnf/dnf.conf
-    printf "max_parallel_download=10" >> /etc/dnf/dnf.conf
-    printf "fastestmirror=True" >> /etc/dnf/dnf.conf
-    printf "keepcache=True" >> /etc/dnf/dnf.conf
+    printf "# Custom config beneath\n" >> /etc/dnf/dnf.conf
+    printf "max_parallel_download=10\n" >> /etc/dnf/dnf.conf
+    printf "fastestmirror=True\n" >> /etc/dnf/dnf.conf
+    printf "keepcache=True\n" >> /etc/dnf/dnf.conf
   fi
 
 # SYSTEM UPDATE
