@@ -107,4 +107,5 @@ if [[ $ready_string == "READY" ]] ; then
       dnf remove PackageKit -y
     fi
   fi
+  
 fi
