@@ -20,7 +20,7 @@ clear
 cat << EOF
 Fedora Post-Install Configuration Script
 
-Version: 0.3-36-KDE
+Version: 22.11.15-36-KDE
 Author: Skeletonek (skeleton0199@gmail.com)
 
 This script configures some things in Fedora after fresh install
